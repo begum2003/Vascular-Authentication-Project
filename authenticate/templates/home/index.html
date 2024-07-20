@@ -1,0 +1,96 @@
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PALM VEIN RECOGNITION</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/img/favicon.png" rel="icon">
+  <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="../static/css/style.css" rel="stylesheet">
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=H, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Document</title>
+    <style>
+        body {
+            background: #D9D9D9;
+        }
+
+        #box {
+            width: 400px;
+            height: 220px;
+            margin: 60px auto 0;
+            background: white;
+            padding-top: 20px;
+            border: 5px solid #00B050;
+            border-radius: 52px;
+            text-align: center;
+        }
+        span{
+            font-size: 15pt;
+        }
+        .acessLevel{
+            font-size: 15pt;
+            font-weight: 900;   
+            display: block;
+        }
+        .palm{
+             margin-left: 200px;
+             height: 50%;
+             width: 25%;
+        }
+        .vein{
+             display: inline-block;
+             margin-right: 200px;
+             height: 50%;
+             width: 25%;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+      <span>{{authenticate}}</span>
+        {% if authenticate is True %}
+         <h1>Authentication success!</h1>
+         <span>Hello, {{username}}! Your access level: {{ accnum }}</span><br>
+            {% if accnum == 1 %}
+            <span class="accnumber">Common access</span>
+            {% elif accnum == 2 %}
+            <span class="accnumber">access approve!!</span>
+            {% elif accnum == 3 %}
+            <span class="accnumber">Welcome to the Bank</span>
+            {% endif %}
+        {% else %}
+         <h1>Failed Authentication</h1>
+         <span>Try again! Make sure biometrics or username are correct</span>
+        {% endif %}<br><br><br>
+         </div><br>
+        {% if uploaded_image %}
+        <img src="{% static 'result/palm.png' %}" class="palm" alt="Uploaded Image">
+        {% endif %}
+        {% if extracted_image %}
+        <img src="{% static 'result/veinpattern.png' %}" class="vein" alt="Uploaded Image">
+        {% endif %}
+        <!--<div style="display: inline-block; margin-right: 20px;">
+          <h2>Uploaded Palm Vein Image</h2>
+          <img src="{% static 'result/palm.png' %}" alt="Uploaded Palm Vein Image" width="300">
+        </div>&nbsp;&nbsp;
+        <div style="display: inline-block;">
+          <h2>Processed Vein Pattern Image</h2>
+          <img src="{% static 'result/veinpattern.png' %}" alt="Processed Vein Pattern Image" width="300">
+        </div>-->
+
+</body>
+
+</html>

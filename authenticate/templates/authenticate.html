@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PALM VEIN RECOGNITION</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link href="../static/css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'auth.css' %}">
+    <title>PALM VEIN RECOGNITION</title>
+
+</head>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            background: url({% static "tech.gif" %}) no-repeat center center fixed;
+            background-size: cover;
+        }
+        #right-side {
+            margin : 50px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff; /* Adjust text color for better visibility on the background */
+        }
+
+
+        .login-form {
+            position: relative;
+            top: -50px;
+            width: 300px;
+            padding: 80px 100px 80px 50px;
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the alpha value for transparency */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow for a lifted effect */
+        }
+
+        .login-form input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-form button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .wrapper{
+        position:relative;
+        opacity:0.9;
+        }
+
+    </style>
+<body>
+
+
+    <div id="right-side">
+
+      <div class ="wrapper">
+
+        <form class="login-form" method ="post" action="{%url 'authenticate'%}" enctype="multipart/form-data">
+         {% csrf_token %}
+             <h1 style="font-size: 50;position: relative;top: -50px ;color:black;">Login</h1><br>
+
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="file" name="im" class="file">&nbsp;&nbsp;&nbsp;
+            <button type="submit">Login</button>
+         </form>
+         </div>
+        </div>
+
+</body>
+</html>
